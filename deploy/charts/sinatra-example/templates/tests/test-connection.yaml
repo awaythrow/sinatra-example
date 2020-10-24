@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sinatra-example.fullname" . }}-test-connection"
+  labels:
+    {{- include "sinatra-example.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "sinatra-example.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

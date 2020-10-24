@@ -1,0 +1,15 @@
+#
+# Use Helmfile to bootstrap flux to start auto-deploying our applications
+
+repositories:
+- name: fluxcd
+  url: https://charts.fluxcd.io
+
+releases:
+- name: flux-sinatra-example
+  chart: fluxcd/flux
+  values:
+  - git:
+      url: git@github.com:awaythrow/sinatra-example.git
+      path: deploy/flux
+      ciSkip: true

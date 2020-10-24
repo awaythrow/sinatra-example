@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: postgres
+  namespace: demo
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~5.0
+spec:
+  releaseName: postgres
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: postgres
+    version: 9.8.6
+  values:

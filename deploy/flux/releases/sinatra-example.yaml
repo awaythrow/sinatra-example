@@ -1,0 +1,24 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: sinatra-example
+  namespace: demo
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~0
+spec:
+  releaseName: sinatra-example
+  chart:
+    git: git@github.com:awaythrow/sinatra-example
+    ref: master
+    path: deploy/charts/sinatra-example
+  values:
+    database:
+      host: postgres-postgres
+      port: 5432
+      username: postgres
+      name: sinatra-example
+      password:
+        secretName: postgres-postgres
+        secretKey: postgresql-password
