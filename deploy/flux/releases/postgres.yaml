@@ -13,4 +13,4 @@ spec:
     repository: https://charts.bitnami.com/bitnami
     name: postgres
     version: 9.8.6
-  values:
+  values: {}
