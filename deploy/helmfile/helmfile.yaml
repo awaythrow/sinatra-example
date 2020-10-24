@@ -7,9 +7,11 @@ repositories:
 
 releases:
 - name: flux-sinatra-example
+  namespace: default
   chart: fluxcd/flux
   values:
   - git:
       url: git@github.com:awaythrow/sinatra-example.git
+      branch: main
       path: deploy/flux
       ciSkip: true
