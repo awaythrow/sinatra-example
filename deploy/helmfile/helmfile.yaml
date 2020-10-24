@@ -6,7 +6,8 @@ repositories:
   url: https://charts.fluxcd.io
 
 releases:
-- name: flux-sinatra-example
+
+- name: flux
   namespace: default
   chart: fluxcd/flux
   values:
@@ -15,3 +16,13 @@ releases:
       branch: main
       path: deploy/flux
       ciSkip: true
+
+- name: helm-operator
+  namespace: default
+  chart: fluxcd/helm-operator
+  values:
+  - helm:
+      versions: v3
+    git:
+      ssh:
+        secretName: flux-git-deploy

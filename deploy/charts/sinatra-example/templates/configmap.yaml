@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: {{ include "sinatra-example.fullname" . }}
   labels:
-    {{- include "sinatra-example.labels" . | nindent 4 }}∂
+    {{- include "sinatra-example.labels" . | nindent 4 }}
 data:
   APP_ENV: production
   DATABASE_HOST: {{ .Values.database.host }}
-  DATABASE_PORT: {{ .Values.database.port }}
+  DATABASE_PORT: {{ .Values.database.port | quote }}
   DATABASE_USER: {{ .Values.database.username }}
   DATABASE_NAME: {{ .Values.database.name }}

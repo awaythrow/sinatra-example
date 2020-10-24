@@ -11,6 +11,6 @@ spec:
   releaseName: postgres
   chart:
     repository: https://charts.bitnami.com/bitnami
-    name: postgres
+    name: postgresql
     version: 9.8.6
   values: {}

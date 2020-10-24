@@ -14,11 +14,16 @@ spec:
     ref: main
     path: deploy/charts/sinatra-example
   values:
+    annotations:
+      fluxcd.io/automated: "true"
+      fluxcd.io/tag.app: semver:~0
     database:
-      host: postgres-postgres
+      host: postgres-postgresql
       port: 5432
       username: postgres
       name: sinatra-example
       password:
-        secretName: postgres-postgres
+        secretName: postgres-postgresql
         secretKey: postgresql-password
+    service:
+      type: NodePort

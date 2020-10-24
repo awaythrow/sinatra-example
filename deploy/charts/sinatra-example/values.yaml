@@ -23,9 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-annotations:
-  fluxcd.io/automated: "true"
-  fluxcd.io/tag.app: semver:~0
+annotations: {}
 
 podAnnotations: {}
 
@@ -60,7 +58,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: sinatra-example.local
-      paths: []
+      paths:
+        - /
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
