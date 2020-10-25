@@ -2,9 +2,6 @@ require 'dotenv/load'
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/activerecord'
-require 'awesome_print'
-# https://github.com/awesome-print/awesome_print/issues/137
-require 'active_support/core_ext/string/output_safety'
 
 current_dir = Dir.pwd
 Dir["#{current_dir}/models/*.rb"].each { |file| require file }
