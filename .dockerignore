@@ -6,3 +6,4 @@ deploy
 workflows
 *.md
 .env
+vendor

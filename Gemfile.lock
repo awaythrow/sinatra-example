@@ -25,6 +25,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     method_source (1.0.0)
     minitest (5.14.2)
+    multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.4)
@@ -67,6 +68,12 @@ GEM
     sinatra-activerecord (2.0.20)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-contrib (2.1.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.1.0)
+      sinatra (= 2.1.0)
+      tilt (~> 2.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tzinfo (1.2.7)
@@ -87,8 +94,10 @@ DEPENDENCIES
   rake
   rerun
   rspec
+  rspec-core
   sinatra
   sinatra-activerecord
+  sinatra-contrib
 
 BUNDLED WITH
    2.1.4

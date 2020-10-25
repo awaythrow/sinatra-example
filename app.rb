@@ -1,15 +1,13 @@
 require 'dotenv/load'
 require 'sinatra'
+require 'sinatra/json'
 require 'sinatra/activerecord'
 require 'awesome_print'
-#https://github.com/awesome-print/awesome_print/issues/137
+# https://github.com/awesome-print/awesome_print/issues/137
 require 'active_support/core_ext/string/output_safety'
 
 current_dir = Dir.pwd
 Dir["#{current_dir}/models/*.rb"].each { |file| require file }
-
-configure { set :server, :puma }
-
 
 class App < Sinatra::Base
 
@@ -19,22 +17,30 @@ class App < Sinatra::Base
 
   get '/users' do
     users = Users.all
-    erb :users, :locals => { users: users }
+    json users
   end
 
   get '/users/:id' do
     user = Users.find(params[:id])
-    erb :users, :locals => { users: [user] }
+    json user
   end
 
   post '/users' do
     user = Users.create(params)
-    erb :users, :locals => { users: [user] }
+    status 201
+    json user
+  end
+
+  put '/users' do
+    user = Users.update(params)
+    status 204
+    json user
   end
 
   delete '/users/:id' do
-    Users.destroy(params[:id])
-    "deleted #{params[:id]}"
+    user = Users.destroy(params[:id])
+    status 202
+    json user
   end
 
 end

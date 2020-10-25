@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem 'dotenv'
 gem 'sinatra'
 gem 'sinatra-activerecord'
+gem 'sinatra-contrib'
 gem 'pg'
 gem 'rake'
 gem 'puma'
@@ -16,5 +17,6 @@ end
 
 group :test, :development do
   gem 'rspec'
+  gem 'rspec-core'
   gem 'rack-test'
 end
