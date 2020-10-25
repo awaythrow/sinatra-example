@@ -14,6 +14,10 @@ spec:
     ref: main
     path: deploy/charts/sinatra-example
   values:
+    image:
+      repository: ghcr.io/awaythrow/teejaded/sinatra-example
+      pullPolicy: IfNotPresent
+      tag: "0.1.0"
     annotations:
       fluxcd.io/automated: "true"
       fluxcd.io/tag.app: semver:~0
@@ -25,5 +29,4 @@ spec:
       password:
         secretName: postgres-postgresql
         secretKey: postgresql-password
-    service:
-      type: NodePort
+
